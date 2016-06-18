@@ -1,6 +1,6 @@
 package Genes;
 
-public abstract class GeneticCode {
+public class GeneticCode {
 	/*
 	 	Gender
 	 	Body Type
@@ -16,6 +16,6 @@ public abstract class GeneticCode {
 	*/
 	private Gene[] Gender;
 	private Gene[] BodyType;
-	private Gene[] BodyColour;
 	private Gene[] PassiveProduction;
+	
 }
