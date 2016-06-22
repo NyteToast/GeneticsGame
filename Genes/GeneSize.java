@@ -12,8 +12,9 @@ public class GeneSize extends Gene{
 	public void setSize(String size){this.size = size;}
 	public void setMultiplier(double multiplier){this.sizeMultiplier = multiplier;} 
 	//Constructors
-	public GeneSize(String size, double multiplier){
-		super("SIZE");
+	public GeneSize(String size, double multiplier, int dominance){
+		super("SIZE", dominance);
 		setMultiplier(multiplier);
+		setSize(size);
 	}
 }

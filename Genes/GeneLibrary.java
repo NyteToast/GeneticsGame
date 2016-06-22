@@ -19,16 +19,26 @@ public class GeneLibrary {
 	public Node<GeneBodyType> nOctopod = new Node<GeneBodyType>(octopod, 100, nHexapod);
 	
 	//Size
-	public GeneSize gargantuan = new GeneSize("Gargantuan", 10);
-	public GeneSize colossal = new GeneSize("Colossal", 7);
-	public GeneSize titan = new GeneSize("Titan", 5);
-	public GeneSize monstrous = new GeneSize("Monstrous", 3);
-	public GeneSize giant = new GeneSize("Giant", 2);
-	public GeneSize large = new GeneSize("Large", 1.5);
-	public GeneSize normal = new GeneSize("Normal", 1);
-	public GeneSize small = new GeneSize("Small", 0.7);
-	public GeneSize tiny = new GeneSize("Tiny", 0.5);
-	public GeneSize microscopic = new GeneSize("Microscopic", 0.2);
+	public GeneSize gargantuan = new GeneSize("Gargantuan", 10, 1);
+	public GeneSize colossal = new GeneSize("Colossal", 7, 2);
+	public GeneSize titan = new GeneSize("Titanic", 5, 3);
+	public GeneSize monstrous = new GeneSize("Monstrous", 3, 4);
+	public GeneSize giant = new GeneSize("Gigantic", 2, 5);
+	public GeneSize large = new GeneSize("Large", 1.5, 6);
+	public GeneSize normal = new GeneSize("Normal", 1, 8);
+	public GeneSize small = new GeneSize("Small", 0.7, 7);
+	public GeneSize tiny = new GeneSize("Tiny", 0.5, 6);
+	public GeneSize microscopic = new GeneSize("Microscopic", 0.2, 2);
+	
+	public Node<GeneSize> nNormal = new Node<GeneSize>(normal);
+	public Node<GeneSize> nSmall = new Node<GeneSize>(small, 80, nNormal);
+	public Node<GeneSize> nLarge = new Node<GeneSize>(large, 20, nNormal);
+	public Node<GeneSize> nTiny = new Node<GeneSize>(tiny, 70, nSmall);
+	public Node<GeneSize> nGiant = new Node<GeneSize>(giant, 30, nLarge);
+	public Node<GeneSize> nMicroscopic = new Node<GeneSize>(microscopic, 70, nTiny);
+	public Node<GeneSize> nTitan = new Node<GeneSize>(titan, 30, nGiant);
+	public Node<GeneSize> nColossal = new Node<GeneSize>(colossal, 70, nTitan);
+	public Node<GeneSize> nGargantuan = new Node<GeneSize>(gargantuan, 30, nColossal);
 	
 	//Feet
 	public GeneFeetType paws = new GeneFeetType("Paws", 5);

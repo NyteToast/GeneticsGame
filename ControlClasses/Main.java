@@ -18,8 +18,8 @@ public class Main {
 		
 		Breeding breeder = new Breeding();
 		
-		GeneticCode a = new GeneticCode(m.genes.X, m.genes.Y, m.genes.octopod, m.genes.quadruped);
-		GeneticCode b = new GeneticCode(m.genes.X, m.genes.X, m.genes.quadruped, m.genes.biped);
+		GeneticCode a = new GeneticCode(m.genes.X, m.genes.Y, m.genes.octopod, m.genes.quadruped, m.genes.normal, m.genes.normal);
+		GeneticCode b = new GeneticCode(m.genes.X, m.genes.X, m.genes.quadruped, m.genes.biped, m.genes.normal, m.genes.small);
 		
 		Creature adam = new Creature("Adam", a);
 		Creature eve = new Creature("Eve", b); 
