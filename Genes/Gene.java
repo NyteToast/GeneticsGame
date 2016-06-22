@@ -2,17 +2,24 @@ package Genes;
 
 public abstract class Gene {
 	
-	private int dominance; //1-10 higher = more dominant
-	private String type;   //Slot for gene (e.g. body type)
-	private int tier;	   //Tier of Gene
-	private String[] itemProduce;
-	private String[] itemSlaughter;
+	private String slot;   //Slot for gene (e.g. body type)
+	private int dominance;
 	
-	public Gene(String type,int dominance,  int tier){
-		this.type = type;
-		this.dominance = dominance;
-		this.tier = tier;
+	//GET
+	public String getSlot(){return slot;}
+	public int getDominance(){return dominance;}
+	
+	//SET
+	public void setSlot(String slot){this.slot = slot;}
+	public void setDominance(int dominance){this.dominance = dominance;}
+	
+	//Constructors
+	public Gene(String slot){//For Gender
+		this.slot = slot;
 	}
-
+	public Gene(String slot, int dominance){//For any gene other than gender
+		setSlot(slot);
+		setDominance(dominance);
+	}
 	
 }

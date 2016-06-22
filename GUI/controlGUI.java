@@ -1,67 +1,39 @@
 package GUI;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+
+import Creatures.Creature;
+import Creatures.CreatureStorage;
 
 public class controlGUI {
-	//card layout for right panel?
+	//GUI Elements
 	 JFrame mainWindow = new JFrame("Genetics Game");
-	 
 	 GridBagConstraints gbc = new GridBagConstraints();
-		
-	 JButton btnCreatures = new JButton("Creatures");
-	 JButton btnBreeding = new JButton("Breeding");
-	 JButton btnBuildings = new JButton("Buidings");
-	 
-	 JLabel Creature1 = new JLabel("Creature 1");
-	 JLabel Creature2 = new JLabel("Creature 2");
-	
-	 JComboBox test = new JComboBox();
-	
-	 JPanel pnlSelection = new JPanel();
-	 JPanel pnlActivity = new JPanel(); 
-	 
-	 JPanel pnlACreatures = new JPanel();
-	 JPanel pnlABreeding = new JPanel();
-	 JPanel pnlABuildings = new JPanel();
-	 
 	 btnSHandler handlerS = new btnSHandler();
+	 PnlActivity pnlActivity = new PnlActivity(); 
+	 PnlSelection pnlSelection = new PnlSelection();
+	 //Create Data Class?
+	 CreatureStorage animals = new CreatureStorage();
 	 
 	 public void setupMain(){
-			setupBtnMain();
 			mainWindow.setLayout(new GridBagLayout());
 			mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			mainWindow.setResizable(false);
 			mainWindow.setSize(1000,600);
-			//Panels
-			pnlSelection.setLayout(new GridLayout(6,1, 5, 20));//Change First Number To Number of Buttons
-			pnlActivity.setLayout(new CardLayout());
+			pnlSelection.addHandler(handlerS);
 			
-			pnlSelection.setPreferredSize(new Dimension(200,600));
-			pnlActivity.setPreferredSize(new Dimension(800,600));
 			
-			pnlACreatures.setBackground(Color.gray);
-			pnlABreeding.setBackground(Color.pink);
-			pnlABuildings.setBackground(Color.green);
-			//Buttons
-			btnCreatures.addActionListener(handlerS);
-			btnBreeding.addActionListener(handlerS);
-			btnBuildings.addActionListener(handlerS);
 			//Add Components
 			addSAPanels();
-			addSComponents();
-			addAComponents();
-			
+
 			//Pack and Show
 			mainWindow.pack();
 			mainWindow.setVisible(true);
-	 }
-	 public void setupBtnMain(){
-		btnCreatures.setPreferredSize(new Dimension(200,50)); 
 	 }
 	 public void addSAPanels(){
 		 gbc.gridx = 0;
@@ -75,50 +47,35 @@ public class controlGUI {
 		 gbc.anchor = GridBagConstraints.LINE_END;
 		 mainWindow.getContentPane().add(pnlActivity, gbc);
 	 }
-	 public void addSComponents(){
-		 pnlSelection.add(btnCreatures);
-		 pnlSelection.add(btnBreeding);
-		 pnlSelection.add(btnBuildings);
-	 }
-	 public void addAComponents(){
-		 pnlActivity.add(pnlACreatures, "Creatures");
-		 pnlActivity.add(pnlABreeding, "Breeding");
-		 pnlActivity.add(pnlABuildings, "Buildings");
-		 
-		 //CREATURES
-		 pnlACreatures.setLayout(new GridLayout(2,2));
-		 pnlACreatures.add(Creature1);
-		 pnlACreatures.add(Creature2);
-		 //BREEDING
-		 
-		 //BUILDINGS
-	 }
-	 public void updatePnlActivity(int stateIn){
-		 CardLayout cl = (CardLayout)(pnlActivity.getLayout());
-		 switch (stateIn){
-		 case 0: cl.show(pnlActivity, "Creatures");
-			 break;
-		 case 1: cl.show(pnlActivity, "Breeding");
-			 break;
-		 case 2: cl.show(pnlActivity, "Buildings");
-			 break;
-		 }
-	 }
-	 private class btnSHandler implements ActionListener{
 
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
+	/* public static void main(String args[]){
+			controlGUI GUI = new GUI.controlGUI();
+			//GeneticCode a = new GeneticCode();
 			
-			if (arg0.getSource() == btnCreatures){
-				updatePnlActivity(0);
-			}else if (arg0.getSource() == btnBreeding){
-				updatePnlActivity(1);
-			}else if (arg0.getSource() == btnBuildings){
-				updatePnlActivity(2);
+			Creature adam = new Creature("Adam", 0);
+			Creature eve = new Creature("Eve", 1); 
+			
+			GUI.animals.addCreature(adam);
+			GUI.animals.addCreature(eve);
+			
+			
+			GUI.setupMain();
+			
+	}*/
+	
+	
+	 private class btnSHandler implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			if (arg0.getSource() == pnlSelection.btnCreatures){
+				pnlActivity.updateCreatureList(animals.listCreatures(), animals.getCreatures());
+				pnlActivity.updatePnlActivity(0);
+			}else if (arg0.getSource() == pnlSelection.btnBreeding){
+				pnlActivity.updatePnlActivity(1);
+			}else if (arg0.getSource() == pnlSelection.btnBuildings){
+				pnlActivity.updatePnlActivity(2);
 			}
-		}
-		 
+	}
+
 	 }
 }
 
