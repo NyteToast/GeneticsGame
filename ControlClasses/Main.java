@@ -31,8 +31,7 @@ public class Main {
 		//m.printCreatures();
 		for (int i = 0; i < 1000; i++){
 			Creature temp = breeder.breed(adam, eve);
-			System.out.print(temp.getGeneBodyType(0).getForm() + " @ ");
-			System.out.println(temp.getGeneBodyType(1).getForm());
+			System.out.println(temp.getDetails());
 			if (temp.getGender().equals("MALE")){male1+=1;}else{female1+=1;}
 		}
 		System.out.println("MALE: " + male1 + " FEMALE: " + female1);

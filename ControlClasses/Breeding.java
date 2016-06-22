@@ -43,7 +43,7 @@ public class Breeding {
 		Random r = new Random();
 		int geneToMutate = r.nextInt(2);
 		int genderToMutate = r.nextInt(2);
-		if(r.nextInt(100) < 100){
+		if(r.nextInt(100) < 2){
 			Node<GeneBodyType> temp;
 			
 				if (geneToMutate == 0){

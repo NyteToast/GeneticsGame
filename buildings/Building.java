@@ -9,7 +9,7 @@ public abstract class Building {
 	//SET
 	public void setLevel(int level){this.level = level;}
 	//Constructors
-	public Building(){
-		level = 1;
+	public Building(int level){
+		setLevel(level);
 	}
 }
