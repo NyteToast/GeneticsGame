@@ -15,11 +15,10 @@ public abstract class Gene {
 	
 	//Constructors
 	public Gene(String slot){//For Gender
-		this.slot = slot;
+		setSlot(slot);
 	}
 	public Gene(String slot, int dominance){//For any gene other than gender
 		setSlot(slot);
 		setDominance(dominance);
 	}
-	
 }

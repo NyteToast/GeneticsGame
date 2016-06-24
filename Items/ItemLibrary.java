@@ -21,4 +21,10 @@ public class ItemLibrary {
 	//Tier 5
 	//Tier 6
 	//Tier 7
+	
+	//Methods
+	public Item getItem(int tier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
