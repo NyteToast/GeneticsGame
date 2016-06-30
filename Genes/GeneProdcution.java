@@ -16,8 +16,8 @@ public class GeneProdcution extends Gene{
 	public void setName(String name){this.name = name;}
 	
 	//Constructors
-	public GeneProdcution(String name, String slot, int dominance) {
-		super(slot, dominance);
+	public GeneProdcution(String geneForm, String name, String slot, int dominance, int[] mods) {
+		super(geneForm, slot, dominance, mods);
 		setName(name);
 	}
 }

@@ -11,8 +11,8 @@ public class GeneFeetType extends Gene{
 	public void setForm(String form){this.form = form;}
 	
 	//Constructors
-	public GeneFeetType(String form, int dominance){
-		super("FEET", dominance);
+	public GeneFeetType(String geneForm, String form, int dominance, int[] mods){
+		super(geneForm, "FEET", dominance, mods);
 		setForm(form);
 	}
 }

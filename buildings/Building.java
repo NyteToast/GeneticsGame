@@ -12,4 +12,5 @@ public abstract class Building {
 	public Building(int level){
 		setLevel(level);
 	}
+	//Methods
 }

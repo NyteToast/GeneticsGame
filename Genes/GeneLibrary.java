@@ -8,10 +8,11 @@ public class GeneLibrary {
 	public GeneGender X = new GeneGender("X");
 	public GeneGender Y = new GeneGender("Y");
 	//Body Type
-	public GeneBodyType biped = new GeneBodyType("Biped", 6, 2);
-	public GeneBodyType quadruped = new GeneBodyType("Quadruped", 8, 4);
-	public GeneBodyType hexapod = new GeneBodyType("Hexapod", 7, 6);
-	public GeneBodyType octopod = new GeneBodyType("Octopod", 4, 8);
+	private int[] bMods = {2,2,2};
+	public GeneBodyType biped = new GeneBodyType("FEATURE", "Biped", 6, bMods, 2);
+	public GeneBodyType quadruped = new GeneBodyType("FEATURE", "Quadruped", 8, bMods, 4);
+	public GeneBodyType hexapod = new GeneBodyType("FEATURE", "Hexapod", 7, bMods, 6);
+	public GeneBodyType octopod = new GeneBodyType("FEATURE", "Octopod", 4, bMods, 8);
 	
 	public Node<GeneBodyType> nQuadruped = new Node<GeneBodyType>(quadruped);
 	public Node<GeneBodyType> nBiped = new Node<GeneBodyType>(biped, 80, nQuadruped);
@@ -19,16 +20,16 @@ public class GeneLibrary {
 	public Node<GeneBodyType> nOctopod = new Node<GeneBodyType>(octopod, 100, nHexapod);
 	
 	//Size
-	public GeneSize gargantuan = new GeneSize("Gargantuan", 10, 1);
-	public GeneSize colossal = new GeneSize("Colossal", 7, 2);
-	public GeneSize titan = new GeneSize("Titanic", 5, 3);
-	public GeneSize monstrous = new GeneSize("Monstrous", 3, 4);
-	public GeneSize giant = new GeneSize("Gigantic", 2, 5);
-	public GeneSize large = new GeneSize("Large", 1.5, 6);
-	public GeneSize normal = new GeneSize("Normal", 1, 8);
-	public GeneSize small = new GeneSize("Small", 0.7, 7);
-	public GeneSize tiny = new GeneSize("Tiny", 0.5, 6);
-	public GeneSize microscopic = new GeneSize("Microscopic", 0.2, 2);
+	public GeneSize gargantuan = new GeneSize("MODIFIER","Gargantuan", 10, 1, bMods);
+	public GeneSize colossal = new GeneSize("MODIFIER", "Colossal", 7, 2, bMods);
+	public GeneSize titan = new GeneSize("MODIFIER", "Titanic", 5, 3, bMods);
+	public GeneSize monstrous = new GeneSize("MODIFIER", "Monstrous", 3, 4, bMods);
+	public GeneSize giant = new GeneSize("MODIFIER", "Gigantic", 2, 5, bMods);
+	public GeneSize large = new GeneSize("MODIFIER", "Large", 1.5, 6, bMods);
+	public GeneSize normal = new GeneSize("MODIFIER", "Normal", 1, 8, bMods);
+	public GeneSize small = new GeneSize("MODIFIER", "Small", 0.7, 7, bMods);
+	public GeneSize tiny = new GeneSize("MODIFIER", "Tiny", 0.5, 6, bMods);
+	public GeneSize microscopic = new GeneSize("MODIFIER", "Microscopic", 0.2, 2, bMods);
 	
 	public Node<GeneSize> nNormal = new Node<GeneSize>(normal);
 	public Node<GeneSize> nSmall = new Node<GeneSize>(small, 80, nNormal);
@@ -41,11 +42,11 @@ public class GeneLibrary {
 	public Node<GeneSize> nGargantuan = new Node<GeneSize>(gargantuan, 30, nColossal);
 	
 	//Feet
-	public GeneFeetType paws = new GeneFeetType("Paws", 5);
-	public GeneFeetType flippers = new GeneFeetType("Flippers", 2);
-	public GeneFeetType talons = new GeneFeetType("Talons", 4);
-	public GeneFeetType hooves = new GeneFeetType("Hooves", 3);
-	public GeneFeetType tentacles = new GeneFeetType("Tentacles", 4);
+	public GeneFeetType paws = new GeneFeetType("FEATURE", "Paws", 5, bMods);
+	public GeneFeetType flippers = new GeneFeetType("FEATURE", "Flippers", 2, bMods);
+	public GeneFeetType talons = new GeneFeetType("FEATURE", "Talons", 4, bMods);
+	public GeneFeetType hooves = new GeneFeetType("FEATURE", "Hooves", 3, bMods);
+	public GeneFeetType tentacles = new GeneFeetType("FEATURE", "Tentacles", 4, bMods);
 	
 	//Legs
 	
@@ -54,6 +55,10 @@ public class GeneLibrary {
 	//Hands
 	
 	//Head
+	
+	//Wings
+	
+	//Skin/Fur Modifiers
 	
 	//Production
 	

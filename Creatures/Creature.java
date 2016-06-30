@@ -38,6 +38,7 @@ public class Creature {
 	public GeneSize getGeneBodySize(int index){return DNA.getGeneBodySize(index);}
 	//SET
 	public void setName(String name){this.name = name;}
+	public void setGeneticCode(GeneticCode DNA){this.DNA = DNA;}
 	
 	public void setStrength(int strength){this.strength = strength;}
 	public void setToughness(int toughness){this.toughness = toughness;}
@@ -47,7 +48,7 @@ public class Creature {
 		
 	//Constructor
 	public Creature(String name, GeneticCode DNA){
-		this.name = name;
-		this.DNA = DNA;
+		setName(name);
+		setGeneticCode(DNA);
 	}
 }
