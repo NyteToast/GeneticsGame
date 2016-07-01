@@ -48,4 +48,12 @@ public abstract class Gene {
 		setMaxMods(mods[1]);
 		setMods(mods[2]);
 	}
+	public Gene(String geneForm, String slot, int dominance, int mods){
+		setGeneForm(geneForm);
+		setSlot(slot);
+		setDominance(dominance);
+		setMinMods(mods);
+		setMaxMods(mods);
+		setMods(mods);
+	}
 }

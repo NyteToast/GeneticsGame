@@ -23,7 +23,7 @@ public class Breeding {
 			gender[0] = male.getGeneGender(r.nextInt(2));
 			gender[1] = female.getGeneGender(r.nextInt(2));
 			
-			bodytype = mutateBodyType(male, female);
+			//bodytype = mutateBodyType(male, female);
 			
 			bodysize = mutateSize(male, female);
 			
@@ -41,7 +41,7 @@ public class Breeding {
 		return false;
 	}
 	
-	
+	/*
 	public GeneBodyType[] mutateBodyType(Creature male, Creature female){
 		GeneBodyType output[] = new GeneBodyType[2];
 		Random r = new Random();
@@ -66,6 +66,7 @@ public class Breeding {
 		
 		return output;
 	}
+	*/
 	public GeneSize[] mutateSize(Creature male, Creature female){
 		GeneSize[] output = new GeneSize[2];
 		Random r = new Random();
