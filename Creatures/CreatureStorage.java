@@ -27,7 +27,7 @@ public class CreatureStorage {
 		return output;
 	}
 	public String[] getListCreatureDetails(){
-String[] output = new String[getNextEmpty()];
+		String[] output = new String[getNextEmpty()];
 		
 		for (int i = 0; i < getNextEmpty(); i++){
 			output[i] = store[i].getDetails();
