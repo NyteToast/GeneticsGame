@@ -1,9 +1,12 @@
 package Creatures;
 
-import Genes.GeneBodyType;
-import Genes.GeneGender;
-import Genes.GeneSize;
-import Genes.GeneticCode;
+import Genetics.GeneBodyType;
+import Genetics.GeneGender;
+import Genetics.GeneModCoat;
+import Genetics.GeneModInvis;
+import Genetics.GeneModNum;
+import Genetics.GeneModSize;
+import Genetics.GeneticCode;
 import Items.Item;
 
 public class Creature {
@@ -23,8 +26,8 @@ public class Creature {
 	//GET
 	public String getGender(){if (DNA.getGender() == 0){return "MALE";}else {return "FEMALE";}}
 	public String getName() {return name;}
-	public String getBodyType(){return DNA.getBodyType();}
-	public String getBodySize(){return DNA.getBodySize();}
+	public String getBodyType(){return DNA.getDominantBodyType();}
+	public String getBodySize(){return DNA.getDominantBodySize();}
 	public String getDetails(){return "Name: " + getName() + " Gender: " + getGender() + " Body Type: " + getBodySize() +" " + getBodyType();}
 	
 	public int getStrength(){return strength;}
@@ -35,7 +38,10 @@ public class Creature {
 	
 	public GeneGender getGeneGender(int index){return DNA.getGeneGender(index);}
 	public GeneBodyType getGeneBodyType(int index){return DNA.getGeneBodyType(index);}
-	public GeneSize getGeneBodySize(int index){return DNA.getGeneBodySize(index);}
+	public GeneModSize getGeneBodySize(int index){return DNA.getGeneBodySize(index);}
+	public GeneModCoat getGeneBodyCoat(int index){return DNA.getGeneBodyCoat(index);}
+	public GeneModNum getGeneBodyModNum(int index){return DNA.getGeneBodyModNum(index);}
+	public GeneModInvis getGeneBodyMod(int index, int mod){return DNA.getGeneBodyMod(index, mod);}
 	//SET
 	public void setName(String name){this.name = name;}
 	public void setGeneticCode(GeneticCode DNA){this.DNA = DNA;}

@@ -3,92 +3,75 @@ package ControlClasses;
 import java.util.Random;
 
 import Creatures.Creature;
-import Genes.GeneBodyType;
-import Genes.GeneGender;
-import Genes.GeneLibrary;
-import Genes.GeneSize;
-import Genes.GeneticCode;
+import Genetics.GeneBodyType;
+import Genetics.GeneGender;
+import Genetics.GeneLibrary;
+import Genetics.GeneModCoat;
+import Genetics.GeneModInvis;
+import Genetics.GeneModNum;
+import Genetics.GeneModSize;
+import Genetics.GeneticCode;
 
 public class Breeding {
 	
 	GeneLibrary genes = new GeneLibrary();
 	Random r = new Random();
 	
-	public Creature breed(Creature male, Creature female){
-		if (canBreed(male, female)){
-			GeneGender gender[] = new GeneGender[2];
-			GeneBodyType bodytype[] = new GeneBodyType[2];
-			GeneSize bodysize[] = new GeneSize[2];
-			
-			gender[0] = male.getGeneGender(r.nextInt(2));
-			gender[1] = female.getGeneGender(r.nextInt(2));
-			
-			//bodytype = mutateBodyType(male, female);
-			
-			bodysize = mutateSize(male, female);
-			
-			GeneticCode dna = new GeneticCode(gender, bodytype, bodysize);
-			Creature baby = new Creature("Baby", dna);//Get user input
-			return baby;
-		}else{return null;}
-	}
-	
-	
-	public boolean canBreed(Creature male, Creature female){
-		if (male.getGender().equals("MALE") && female.getGender().equals("FEMALE")){
+	public boolean canBreed(Creature creature1, Creature creature2){
+		if (!creature1.getGender().equals(creature2.getGender())){
 			return true;
 		}
 		return false;
 	}
-	
-	/*
-	public GeneBodyType[] mutateBodyType(Creature male, Creature female){
-		GeneBodyType output[] = new GeneBodyType[2];
-		Random r = new Random();
-		int geneToMutate = r.nextInt(2);
-		int genderToMutate = r.nextInt(2);
-		if(r.nextInt(100) < 2){
-				Node<GeneBodyType> temp;
-				if (genderToMutate == 0){
-					temp = genes.nQuadruped.findByData(male.getGeneBodyType(geneToMutate));
-					output[0] = temp.getChild().getData();
-					output[1] = female.getGeneBodyType(r.nextInt(2));
-				}else{
-					temp = genes.nQuadruped.findByData(female.getGeneBodyType(geneToMutate));
-					output[0] = male.getGeneBodyType(r.nextInt(2));
-					output[1] = temp.getChild().getData();
-				}
-		}else{
-			output[0] = male.getGeneBodyType(r.nextInt(2));
-			output[1] = female.getGeneBodyType(r.nextInt(2));
-		}
-		
-		
-		return output;
-	}
-	*/
-	public GeneSize[] mutateSize(Creature male, Creature female){
-		GeneSize[] output = new GeneSize[2];
-		Random r = new Random();
-		int geneToMutate = r.nextInt(2);
-		int genderToMutate = r.nextInt(2);
-		if(r.nextInt(100)<2){
-			Node<GeneSize> temp;
-			if (genderToMutate == 0){
-				temp = genes.nNormal.findByData(male.getGeneBodySize(geneToMutate));
-				output[0] = temp.getChild().getData();
-				output[1] = female.getGeneBodySize(r.nextInt(2));
+	public Creature breed(Creature creature1, Creature creature2){
+		if (canBreed(creature1, creature2)){
+			
+			GeneGender[] tempGender = new GeneGender[2];
+			tempGender[0] = creature1.getGeneGender(r.nextInt(2));
+			tempGender[1] = creature2.getGeneGender(r.nextInt(2));
+			
+			GeneBodyType[] tempBodyType = new GeneBodyType[2];
+			tempBodyType[0] = creature1.getGeneBodyType(r.nextInt(2));
+			tempBodyType[1] = creature2.getGeneBodyType(r.nextInt(2));
+			
+			GeneModSize[] tempBodySize = new GeneModSize[2];
+			tempBodySize[0] = creature1.getGeneBodySize(r.nextInt(2));
+			tempBodySize[1] = creature2.getGeneBodySize(r.nextInt(2));
+			
+			GeneModCoat[] tempBodyCoat = new GeneModCoat[2];
+			tempBodyCoat[0] = creature1.getGeneBodyCoat(r.nextInt(2));
+			tempBodyCoat[1] = creature2.getGeneBodyCoat(r.nextInt(2));
+			
+			GeneModNum[] tempBodyModNum = new GeneModNum[2];
+			tempBodyModNum[0] = creature1.getGeneBodyModNum(r.nextInt(2));
+			tempBodyModNum[1] = creature2.getGeneBodyModNum(r.nextInt(2));
+			
+			
+			GeneModInvis[][] tempBodyMod;
+			if (tempBodyModNum[0].getDominance() < tempBodyModNum[1].getDominance()){
+				tempBodyMod = new GeneModInvis[2][tempBodyModNum[1].getModNum()];
 			}else{
-				temp = genes.nNormal.findByData(female.getGeneBodySize(geneToMutate));
-				output[0] = male.getGeneBodySize(r.nextInt(2));
-				output[1] = temp.getChild().getData();
+				tempBodyMod = new GeneModInvis[2][tempBodyModNum[0].getModNum()];
 			}
-		 }else{
-			 output[0] = male.getGeneBodySize(r.nextInt(2));
-			 output[1] = female.getGeneBodySize(r.nextInt(2));
-		 }
-		
-		
-		return output;
+			for (int i = 0; i < tempBodyMod[0].length; i++){
+				int tempInt = r.nextInt(2);
+				if (!creature1.getGeneBodyMod(tempInt,i).equals(null)){
+					tempBodyMod[0][i] = creature1.getGeneBodyMod(tempInt, i);
+				}
+				if (!creature2.getGeneBodyMod(tempInt,i).equals(null)){
+					tempBodyMod[1][i] = creature1.getGeneBodyMod(tempInt, i);
+				}
+			}
+			
+			GeneticCode temp = new GeneticCode(tempGender, tempBodyType, tempBodySize, tempBodyCoat, tempBodyModNum, tempBodyMod);
+			
+			Creature child = new Creature("CHILD"/*GET USER INPUT HERE-ISH*/, temp);
+			
+			return child;
+			
+		}
+		return null;
 	}
+	
+	
 }
