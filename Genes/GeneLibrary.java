@@ -9,15 +9,12 @@ public class GeneLibrary {
 	public GeneGender Y = new GeneGender("Y");
 	//Body Type
 	private int[] bMods = {2,2,2};
-	public GeneBodyType biped = new GeneBodyType("FEATURE", "Biped", 6, bMods, 2);
-	public GeneBodyType quadruped = new GeneBodyType("FEATURE", "Quadruped", 8, bMods, 4);
-	public GeneBodyType hexapod = new GeneBodyType("FEATURE", "Hexapod", 7, bMods, 6);
-	public GeneBodyType octopod = new GeneBodyType("FEATURE", "Octopod", 4, bMods, 8);
-	
-	public Node<GeneBodyType> nQuadruped = new Node<GeneBodyType>(quadruped);
-	public Node<GeneBodyType> nBiped = new Node<GeneBodyType>(biped, 80, nQuadruped);
-	public Node<GeneBodyType> nHexapod = new Node<GeneBodyType>(hexapod, 20, nQuadruped);
-	public Node<GeneBodyType> nOctopod = new Node<GeneBodyType>(octopod, 100, nHexapod);
+	//Genes.GeneBodyType.GeneBodyType(String geneForm,String formint dominance, int[] mods, int[] legs, int[] heads, int[] arms, int[] tails, int[] wings)
+	public GeneBodyType nagaroid = new GeneBodyType("FEATURE", "Monoped", 2, new int[] {1,4}, new int[] {0,0}, new int[]{1,1}, new int[]{2,2}, new int[]{1,1}, new int[]{0,1});
+	public GeneBodyType humanoid = new GeneBodyType("FEATURE", "Biped", 5, new int[] {1,4}, new int[] {1,1}, new int[] {1,1}, new int[] {2,2}, new int[] {0,1}, new int[] {0,1});
+	public GeneBodyType horse = new GeneBodyType("FEATURE", "Quadruped", 7, new int[]{1,5}, new int[] {2,2}, new int[] {1,1}, new int[] {0,0}, new int[] {0,1}, new int[] {0,1});
+	public GeneBodyType lion = new GeneBodyType("FEATURE", "Quadruped", 7, new int[]{1,6}, new int[] {2,2}, new int[] {1,3}, new int[] {0,0}, new int[] {0,1}, new int[] {0,1});
+	public GeneBodyType centauroid = new GeneBodyType("FEATURE", "Quadruped", 4, new int[]{1,6}, new int[] {2,2}, new int[] {1,1}, new int[] {2,2}, new int[] {0,1}, new int[] {0,0});
 	
 	//Size
 	public GeneSize gargantuan = new GeneSize("MODIFIER","Gargantuan", 10, 1, bMods);
