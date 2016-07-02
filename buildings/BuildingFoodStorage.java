@@ -33,15 +33,27 @@ public class BuildingFoodStorage extends Building {
 	public void levelUp(){
 		if(getLevel() < getMaxLevel()){
 			  setLevel(getLevel() + 1);
-			  setCapacity((getCapacity() + getExpansion()));
-			  setProductionRate((getProductionRate() + getProductionLevelUp()));
+			  incrementCapacity();
+			  incrementProduction();
 		  }else{
 			  //Have a class that returns information for the error
 		  }
 	}
 	
-	public void production(){
-		//have the food production be called based on time intervals or event based(when the player ends turn or something)
+	//Increments the capacity of the food storage
+	public void incrementCapacity(){
+		setCapacity((getCapacity() + getExpansion()));
 	}
 	
+	//Increments the production of the food storage
+	public void incrementProduction(){
+		setProductionRate((getProductionRate() + getProductionLevelUp()));
+	}
+	
+	//have the food production be called based on time intervals or event based(when the player ends turn or something)
+	public void foodProduction(){
+		
+	}
+
 }
+
