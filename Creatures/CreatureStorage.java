@@ -8,7 +8,7 @@ public class CreatureStorage {
 		return store[index].getName();
 	}
 	public String getCreatureGender(int index){
-		return store[index].getGender();
+		return store[index].getDNA().getGeneDominantGender().getName();
 	}
 	public String getCreatureDetails(int index){
 		String output = "";

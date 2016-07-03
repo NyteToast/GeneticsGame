@@ -6,8 +6,8 @@ import ControlClasses.Node;
 public class GeneLibrary {
 	//###GENES###
 	//Gender
-	public GeneGender X = new GeneGender("X");
-	public GeneGender Y = new GeneGender("Y");
+	public GeneGender X = new GeneGender("X", 1);
+	public GeneGender Y = new GeneGender("Y", 1);
 
 	
 	//Body Type
@@ -22,7 +22,6 @@ public class GeneLibrary {
 	public GeneBodyType centaur = new GeneBodyType("Centauroid", 5, 2, 1, 2, 0, 0);
 	public GeneBodyType pegasi = new GeneBodyType("Winged Horseroid", 6, 2, 1, 0, 0, 1);
 	public GeneBodyType wingedCentaur = new GeneBodyType("Winged Centauroid", 2, 2, 1, 2, 0, 1);
-	
 	
 	//public GeneBodyType serpent = new GeneBodyType("Serpentoid", 3, 0, 1, 0, 1, 0); REQUIRES IMPLEMENTATION OF TAILLEGS
 	public GeneBodyType lizard = new GeneBodyType("Lizardoid", 3, 2, 1, 0, 1, 0);
