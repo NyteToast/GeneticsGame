@@ -25,7 +25,7 @@ public class Breeding {
 	}
 	public Creature breed(Creature creature1, Creature creature2){
 		if (canBreed(creature1, creature2)){
-			
+			//INHERITANCE
 			GeneGender[] tempGender = new GeneGender[2];
 			tempGender[0] = creature1.getGeneGender(r.nextInt(2));
 			tempGender[1] = creature2.getGeneGender(r.nextInt(2));
@@ -63,7 +63,12 @@ public class Breeding {
 				}
 			}
 			
+			//CONSTRUCTION OF GENETIC CODE
+			
 			GeneticCode temp = new GeneticCode(tempGender, tempBodyType, tempBodySize, tempBodyCoat, tempBodyModNum, tempBodyMod);
+			
+			//MUTATATION OF GENETIC CODE
+			
 			
 			Creature child = new Creature("CHILD"/*GET USER INPUT HERE-ISH*/, temp);
 			

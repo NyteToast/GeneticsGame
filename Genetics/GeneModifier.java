@@ -23,6 +23,10 @@ public class GeneModifier extends Gene{
 	public void setSpdBonus(int bonus){this.statBonus[4] = bonus;}
 	
 	//CONSTRUCTORS
+	public GeneModifier(String name, int dominance){
+		super(name, dominance);
+		setBonus(new int[] {0,0,0,0,0});
+	}
 	public GeneModifier(String name, int dominance, int bonus[]) {
 		super(name, dominance);
 		setBonus(bonus);

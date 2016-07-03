@@ -2,7 +2,7 @@ package Genetics;
 
 public class GeneGender extends Gene{
 	
-	private String type;
+	private String type; //X or Y
 	
 	public String getType(){return type;}
 	
