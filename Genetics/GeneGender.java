@@ -1,6 +1,6 @@
 package Genetics;
 
-public class GeneGender extends Gene{
+public class GeneGender extends GeneFeature{
 	
 	private String type; //X or Y
 	
@@ -8,8 +8,8 @@ public class GeneGender extends Gene{
 	
 	public void setType(String type){this.type = type;}
 	
-	public GeneGender(String type){
-		super("GENDER");
+	public GeneGender(String type, int dominance){
+		super("GENDER", dominance);
 		setType(type);
 	}
 	

@@ -2,104 +2,102 @@ package Genetics;
 
 public class GeneticCode {
 
-	private GeneLibrary genes = new GeneLibrary();
 	
 	private GeneGender[] gender = new GeneGender[2];
 	private GeneBodyType[] bodyType = new GeneBodyType[2];
 		private GeneModNum[] bodyModNum = new GeneModNum[2];
 		private GeneModCoat[] bodyCoat = new GeneModCoat[2];
-		private GeneModInvis[][] bodyMod = new GeneModInvis[2][];
 		private GeneModSize[] bodySize = new GeneModSize[2];
-	
+		private GeneModifier[][] bodyMod = new GeneModifier[2][10];
+		
 	
 	//GET
-	//GENDER
-	public int getGender(){
-		if (!gender[0].getType().equals(gender[1].getType())){return 0;}
-		else{return 1;}
+	public GeneGender getGeneGender(int index){return gender[index];}
+	public GeneGender getGeneDominantGender(){
+		if (gender[0].getDominance() > gender[1].getDominance()){return gender[0];}
+		else{return gender[1];}
 	}
-	//BODY	
-	public String getDominantBodyType(){
-		if (bodyType[0].getDominance() > bodyType[1].getDominance()){return bodyType[0].getForm();}
-		else if(bodyType[0].getDominance() == bodyType[1].getDominance()){return bodyType[0].getForm();}
-		else{return bodyType[1].getForm();}
-	}
-		public String getDominantBodySize(){
-			if (bodySize[0].getDominance() > bodySize[1].getDominance()){return bodySize[0].getName();}
-			else if(bodySize[0].getDominance() == bodySize[1].getDominance()){return bodySize[0].getName();}
-			else{return bodySize[1].getName();}
-		}
-		public String getDominantBodyCoat(){
-			if (bodyCoat[0].getDominance() > bodyCoat[1].getDominance()){return bodyCoat[0].getName();}
-			else if(bodyCoat[0].getDominance() == bodyCoat[1].getDominance()){return bodyCoat[0].getName();}
-			else{return bodyCoat[1].getName();}
-		}
-		public int getDominantBodyModNum(){
-			if (bodyModNum[0].getDominance() > bodyModNum[1].getDominance()){return bodyModNum[0].getModNum();}
-			else if(bodyModNum[0].getDominance() == bodyModNum[1].getDominance()){return bodyModNum[0].getModNum();}
-			else{return bodyModNum[1].getModNum();}
-		}
-	
-	public String[] getGenetics(){
-		String output[] = new String [1];
-		output[0] = gender[0].getType() + "||" + gender[1].getType();
-		output[1] = bodyType[0].getForm() + "||" + bodyType[1].getForm();
-		output[2] = bodySize[0].getName() + "||" + bodySize[1].getName();
-		return output;
+	public GeneGender getGeneRecessiveGender(){
+		if (gender[0].getDominance() > gender[1].getDominance()){return gender[1];}
+		else{return gender[0];}
 	}
 	
+	public GeneBodyType getGeneBodyType(int index){return bodyType[index];}
+	public GeneBodyType getGeneDominantBodyType(){
+		if (bodyType[0].getDominance() > bodyType[1].getDominance()){return bodyType[0];}
+		else{return bodyType[1];}
+	}
+	public GeneBodyType getGeneRecessiveBodyType(){
+		if (bodyType[0].getDominance() > bodyType[1].getDominance()){return bodyType[1];}
+		else{return bodyType[0];}
+	}
 	
-	public GeneGender getGeneGender(int index){
-		return gender[index];
+	public GeneModNum getGeneBodyModNum(int index){return bodyModNum[index];}
+	public GeneModNum getGeneDominantBodyModNum(){
+		if (bodyModNum[0].getDominance() > bodyModNum[1].getDominance()){return bodyModNum[0];}
+		else{return bodyModNum[1];}
 	}
-	public GeneBodyType getGeneBodyType(int index){
-		return bodyType[index];
+	public GeneModNum getGeneRecessiveBodyModNum(){
+		if (bodyModNum[0].getDominance() > bodyModNum[1].getDominance()){return bodyModNum[1];}
+		else{return bodyModNum[0];}
 	}
-	public GeneModSize getGeneBodySize(int index){
-		return bodySize[index];
+	
+	public GeneModCoat getGeneBodyCoat(int index){return bodyCoat[index];}
+	public GeneModCoat getGeneDominantBodyCoat(){
+		if (bodyCoat[0].getDominance() > bodyCoat[1].getDominance()){return bodyCoat[0];}
+		else{return bodyCoat[1];}
 	}
-	public GeneModCoat getGeneBodyCoat(int index){
-		return bodyCoat[index];
+	public GeneModCoat getGeneRecessiveBodyCoat(){
+		if (bodyCoat[0].getDominance() > bodyCoat[1].getDominance()){return bodyCoat[1];}
+		else{return bodyCoat[0];}
 	}
-	public GeneModNum getGeneBodyModNum(int index){
-		return bodyModNum[index];
+	
+	public GeneModSize getGeneBodySize(int index){return bodySize[index];}
+	public GeneModSize getGeneDominantBodySize(){
+		if (bodyCoat[0].getDominance() > bodyCoat[1].getDominance()){return bodySize[0];}
+		else{return bodySize[1];}
 	}
-	public GeneModInvis getGeneBodyMod(int index, int mod){
-		return bodyMod[index][mod];
+	public GeneModSize getGeneRecessiveBodySize(){
+		if (bodyCoat[0].getDominance() > bodyCoat[1].getDominance()){return bodySize[1];}
+		else{return bodySize[0];}
+	}
+	
+	public GeneModifier getGeneBodyMod(int index, int mod){return bodyMod[index][mod];}
+	public GeneModifier getGeneDominantBodyMod(int mod){
+		if (bodyMod[0][mod].getDominance() > bodyMod[1][mod].getDominance()){return bodyMod[0][mod];}
+		else{return bodyMod[1][mod];}
+	}
+	public GeneModifier getGeneRecessiveBodyMod(int mod){
+		if (bodyMod[0][mod].getDominance() > bodyMod[1][mod].getDominance()){return bodyMod[1][mod];}
+		else{return bodyMod[0][mod];}
 	}
 	
 	//SET
-	public void setGender(int index, GeneGender gene){this.gender[index] = gene;}
-	public void setBodyType(int index, GeneBodyType gene){this.bodyType[index] = gene;}
-	public void setBodySize(int index, GeneModSize gene){this.bodySize[index] = gene;}
-	public void setBodyCoat(int index, GeneModCoat gene){this.bodyCoat[index] = gene;}
-	public void setBodyModNum(int index, GeneModNum gene){this.bodyModNum[index] = gene;}
-	public void setBodyMod(int index, GeneModInvis[] gene){this.bodyMod[index] = gene;}
+	public void setGeneGender(int index, GeneGender gene){this.gender[index] = gene;}
+	public void setGeneBodyType(int index, GeneBodyType gene){this.bodyType[index] = gene;}
+	public void setGeneBodyModNum(int index, GeneModNum gene){this.bodyModNum[index] = gene;}
+	public void setGeneBodyCoat(int index, GeneModCoat gene){this.bodyCoat[index] = gene;}
+	public void setGeneBodySize(int index, GeneModSize gene){this.bodySize[index] = gene;}
+	public void setGeneBodyMod(int index, GeneModifier[] gene){this.bodyMod[index] = gene;}
+	public void setGeneBodyMod(int index, int mod, GeneModifier gene){this.bodyMod[index][mod] = gene;}
 	
-	//Constructors
-	public GeneticCode(GeneGender[] gender, GeneBodyType[] bodytype, GeneModSize[] bodysize, GeneModCoat[] bodycoat, GeneModNum[] bodymodnum, GeneModInvis[][] bodymod){
-		setGender(0, gender[0]);
-		setGender(1, gender[1]);
-		setBodyType(0, bodytype[0]);
-		setBodyType(1, bodytype[1]);
-		setBodySize(0, bodysize[0]);
-		setBodySize(1, bodysize[1]);
-		setBodyCoat(0, bodycoat[0]);
-		setBodyCoat(1, bodycoat[1]);
-		setBodyModNum(0, bodymodnum[0]);
-		setBodyModNum(1, bodymodnum[1]);
-		bodyMod[0] = new GeneModInvis[bodymodnum[0].getModNum()];
-		bodyMod[1] = new GeneModInvis[bodymodnum[1].getModNum()];
-		setBodyMod(0, bodymod[0]);
-		setBodyMod(0, bodymod[1]);
+	//CONSTRUCTOR
+	public GeneticCode(GeneGender[] gender, GeneBodyType[] bodytype, GeneModSize[] bodysize, GeneModCoat[] bodycoat, GeneModNum[] bodymodnum, GeneModifier[][] bodymod){
+		setGeneGender(0, gender[0]);
+		setGeneGender(1, gender[1]);
+		setGeneBodyType(0, bodytype[0]);
+		setGeneBodyType(1, bodytype[1]);
+		setGeneBodySize(0, bodysize[0]);
+		setGeneBodySize(1, bodysize[1]);
+		setGeneBodyCoat(0, bodycoat[0]);
+		setGeneBodyCoat(1, bodycoat[1]);
+		setGeneBodyModNum(0, bodymodnum[0]);
+		setGeneBodyModNum(1, bodymodnum[1]);
+		setGeneBodyMod(0, bodymod[0]);
+		setGeneBodyMod(1, bodymod[1]);
 	}
-	public GeneticCode(GeneGender gender1, GeneGender gender2, GeneBodyType bodytype1, GeneBodyType bodytype2, GeneModSize bodysize1, GeneModSize bodysize2
-	){
-		setGender(0, gender1);
-		setGender(1, gender2);
-		setBodyType(0, bodytype1);
-		setBodyType(1, bodytype2);
-		setBodySize(0, bodysize1);
-		setBodySize(1, bodysize2);
-	}
+	
+	//METHODS
+	
+	
 }
