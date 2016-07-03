@@ -8,16 +8,31 @@ public class GeneLibrary {
 	//Gender
 	public GeneGender X = new GeneGender("X");
 	public GeneGender Y = new GeneGender("Y");
-	//Body Type
-	private int[] bMods = {2,2};
-	private int[] sMods = {};
-	//Genes.GeneBodyType.GeneBodyType(String geneForm,String formint dominance, int[] mods, int[] legs, int[] heads, int[] arms, int[] tails, int[] wings)
-	/*public GeneBodyType nagaroid = new GeneBodyType("FEATURE", "Monoped", 2, 0, 0, 0, 0, 0, 0);
-	public GeneBodyType humanoid = new GeneBodyType("FEATURE", "Biped", 5, 0, 0, 0, 0, 0, 0 );
-	public GeneBodyType horse = new GeneBodyType("FEATURE", "Quadruped", 7, 0, 0, 0, 0, 0, 0 );
-	public GeneBodyType lion = new GeneBodyType("FEATURE", "Quadruped", 7, 0, 0, 0, 0, 0, 0 );
-	public GeneBodyType centauroid = new GeneBodyType("FEATURE", "Quadruped", 4, 0, 0, 0, 0, 0, 0 );
+
 	
+	//Body Type
+	//public GeneBodyType nagaroid = new GeneBodyType("FEATURE", 2, 0, 0, 0, 0, 0); REQUIRES IMPLEMENTATION OF TAILLEGS
+	
+	public GeneBodyType humanoid = new GeneBodyType("Humanoid", 5, 1, 1, 2, 0, 0 );
+	public GeneBodyType angeloid = new GeneBodyType("Winged Humanoid", 3, 1, 1, 2, 0, 1);
+	public GeneBodyType deviloid = new GeneBodyType("Tailed Humanoid", 4, 1, 1, 2, 1, 0);
+	public GeneBodyType wingedDeviloid = new GeneBodyType("Winged Humanoid With Tail", 2, 1, 1, 2, 1, 1);
+	
+	public GeneBodyType horse = new GeneBodyType("Horseroid", 7, 2, 1, 0, 0, 0);
+	public GeneBodyType centaur = new GeneBodyType("Centauroid", 5, 2, 1, 2, 0, 0);
+	public GeneBodyType pegasi = new GeneBodyType("Winged Horseroid", 6, 2, 1, 0, 0, 1);
+	public GeneBodyType wingedCentaur = new GeneBodyType("Winged Centauroid", 2, 2, 1, 2, 0, 1);
+	
+	
+	//public GeneBodyType serpent = new GeneBodyType("Serpentoid", 3, 0, 1, 0, 1, 0); REQUIRES IMPLEMENTATION OF TAILLEGS
+	public GeneBodyType lizard = new GeneBodyType("Lizardoid", 3, 2, 1, 0, 1, 0);
+	public GeneBodyType dragon = new GeneBodyType("Dragonoid", 2, 2, 1, 0, 1, 1);
+	public GeneBodyType wyvern = new GeneBodyType("Wyvernoid", 1, 1, 1, 0, 1, 1);
+	
+	
+	
+	
+	/*
 	//Size
 	public GeneSize gargantuan = new GeneSize("MODIFIER","Gargantuan", 10, 1);
 	public GeneSize colossal = new GeneSize("MODIFIER", "Colossal", 7, 2);
@@ -61,7 +76,7 @@ public class GeneLibrary {
 	
 	//Production
 	 * */
-	//Mod Numbers
+	//Number of Mods
 	public GeneModNum zero = new GeneModNum("Zero", 8, 0);
 	public GeneModNum one = new GeneModNum("One", 9, 1);
 	public GeneModNum two = new GeneModNum("Two", 10, 2);
@@ -85,4 +100,10 @@ public class GeneLibrary {
 	public Node<GeneModNum> nEight = new Node<GeneModNum>(eight ,nZero);
 	public Node<GeneModNum> nNine = new Node<GeneModNum>(nine ,nZero);
 	public Node<GeneModNum> nTen = new Node<GeneModNum>(ten ,nZero);
+	
+	//Lifespan
+	public GeneLifespan ls5Days = new GeneLifespan("1-5 Days", 1, 1, 5);
+	public GeneLifespan ls10Days = new GeneLifespan("5-10 Days", 2, 5, 10);
+	
+	
 }
